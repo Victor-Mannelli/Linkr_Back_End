@@ -4,7 +4,7 @@ import { getTrendMd } from "../middlewares/getTrendingMiddleware.js";
 
 const trendRouter = Router();
 
-router.get("/hashtag/:hashtag",getTrendingPosts);
-router.get("/hashtag",getTrending);
+trendRouter.get("/hashtag/:hashtag",getTrendingPosts);
+trendRouter.get("/hashtag",getTrending);
 
 export default trendRouter;
