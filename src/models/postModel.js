@@ -1,6 +1,6 @@
-import joi from  "joi";
+import Joi from "joi";
 
-export const postSchema = joi.object({
-    link: joi.string().min(1).required(),
-    caption: joi.string(),
+export const updatePostSchema = Joi.object({
+    newCaption: Joi.string().allow(''),
+    newTrend: Joi.string().items(Joi.string()).required()
 });

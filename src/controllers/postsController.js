@@ -1,7 +1,7 @@
 import { postRepository } from "../repositories/postsRepository.js";
 
 export  async function postPost (req,res){
-    const user_id = req.headers;
+    const user = res.locals.user;
     const {link,caption} = res.locals.postForm;
     try {
         await postRepository.insertPost(user_id,link,caption);

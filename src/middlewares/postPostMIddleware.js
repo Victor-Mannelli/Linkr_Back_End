@@ -1,4 +1,4 @@
-import { postSchema } from "../models/postModel.js";
+import { postSchema } from "../models/originalPostMOdel.js";
 
 export function postValidation(req, res, next){
     const { link, caption } = req.body;
