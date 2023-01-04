@@ -2,9 +2,9 @@ import { Router } from "express";
 import { getTrending } from "../controllers/trendingController.js";
 import { getTrendMd } from "../middlewares/getTrendingMiddleware.js";
 
-const router = Router();
+const trendRouter = Router();
 
-router.get("/hashtag/:hashtag",getTrending);
-router.get("/hashtag",getTrending);
+trendRouter.get("/hashtag/:hashtag",getTrending);
+trendRouter.get("/hashtag",getTrending);
 
-export default router;
+export default trendRouter;
