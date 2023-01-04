@@ -6,6 +6,11 @@ async function insertPost(user_id,link,caption) {
     [user_id,link,caption]);
 }
 
+async function selectPosts() {
+	return connection.query('SELECT * FROM posts ');
+}
+
 export const postRepository = {
-	insertPost
+	insertPost,
+    selectPosts
 }
