@@ -1,6 +1,7 @@
 import { Router } from "express";
 import authRouter from "./authRouter.js";
 import trendRouter from "./trendRouter.js";
+import postRouter from "module";
 
 const serverRouter = Router();
 
