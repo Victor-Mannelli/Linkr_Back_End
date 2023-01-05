@@ -3,6 +3,9 @@ import authRouter from "./authRouter.js";
 import postRouter from "./postRouter.js";
 import trendRouter from "./trendRouter.js";
 
+import postRouter from "./postRouter.js";
+
+
 const serverRouter = Router();
 
 serverRouter.use(authRouter);
