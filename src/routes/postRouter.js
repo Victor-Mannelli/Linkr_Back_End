@@ -12,4 +12,5 @@ postRouter.post("/post", authValidation, validateSchema(postSchema), postPost);
 postRouter.patch("/post/:postId", validateSchema(updatePostSchema), updatePost);
 postRouter.delete("/post/:postId", deletePost);
 postRouter.get("/post", authValidation,getPosts);
+
 export default postRouter;
