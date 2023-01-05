@@ -7,7 +7,7 @@ async function insertPost(user_id,link,caption) {
 }
 
 async function selectPosts() {
-	return connection.query('SELECT * FROM posts ');
+	return connection.query('SELECT * FROM posts ORDER BY id DESC LIMIT 20');
 }
 
 export const postRepository = {
