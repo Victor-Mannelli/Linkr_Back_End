@@ -1,17 +1,18 @@
 import express from 'express';
 import cors from 'cors';
+
 import dotenv from 'dotenv';
 //import trendRouter  from "../src/routes/trendRouter.js";
-import trendRouter from './routes/trendRouter.js';
-import postRouter from './routes/postRouter.js';
-import authRouter from './routes/authRouter.js'
+
+import serverRouter  from "./routes/serverRouter.js";
+
 
 const app = express();
 app.use(cors());
 app.use(express.json());
-app.use(trendRouter);
-app.use(postRouter);
-app.use(authRouter);
+
+app.use(serverRouter)
+
 
 dotenv.config();
 const port = process.env.PORT || 4000;
