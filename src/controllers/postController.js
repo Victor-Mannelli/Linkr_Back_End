@@ -2,9 +2,13 @@ import * as repository from "../repositories/postRepository.js";
 
 export async function updatePost(req, res) {
     const { newCaption, newTrend } = req.body;
-
+    const user_id = res.locals.userId;
+    const { post_id } = res.locals;
     try {
-        await repository.updatePostData(newCaption, newTrend);
+        const postExists = await repository.postByUserId(post_id, user_id);
+        if(!postExists.rowCount)
+            return res.sendStatus(401);
+        await repository.updatePostData(postExists.rows[0].id, newCaption, newTrend);
         return res.sendStatus(204);
     } catch (error) {
         console.log(error)
