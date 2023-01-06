@@ -1,10 +1,12 @@
 import { postRepository } from "../repositories/postsRepository.js";
+import { getLinkPreview, getPreviewFromContent } from "link-preview-js";
 
 export  async function postPost (req,res){
     const user_id = res.locals.userId;
     const { link, caption } = req.body;
     try {
-        await postRepository.insertPost(user_id,link,caption);
+        const data = await getLinkPreview(link);
+        await postRepository.insertPost(user_id,link,caption, data.title, data.images[0], data.description);
         res.sendStatus(200); 
     } catch (error) {
         console.log(error);
