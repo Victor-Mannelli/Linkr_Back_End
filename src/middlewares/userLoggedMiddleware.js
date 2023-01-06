@@ -14,7 +14,7 @@ export async function authValidation(req,res, next){
             return res.status(401).send({message:"token inválido"})
         }
 
-        const userSessionId = userSession.rows[0].id;
+        const userSessionId = userSession.rows[0].user_id;
         res.locals.userId = userSessionId;
 
     }catch(err){

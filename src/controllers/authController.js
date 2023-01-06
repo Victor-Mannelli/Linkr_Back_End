@@ -1,5 +1,6 @@
 import { v4 as uuid } from "uuid";
 import * as authRepository from "../repositories/authRepository.js";
+import bcrypt from "bcrypt";
 
 export async function signUp(req, res) {
 	const { email, username, profile_picture } = req.body;

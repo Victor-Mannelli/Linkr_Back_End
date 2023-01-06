@@ -8,7 +8,7 @@ import { authValidation } from "../middlewares/userLoggedMiddleware.js";
 
 const postRouter = Router();
 
-postRouter.post("/post", authValidation, validateSchema(postSchema), postPost);
+postRouter.post("/post", validateSchema(postSchema), postPost);
 postRouter.patch("/post/:postId", validateSchema(updatePostSchema), updatePost);
 postRouter.delete("/post/:postId", deletePost);
 postRouter.get("/post", authValidation,getPosts);
