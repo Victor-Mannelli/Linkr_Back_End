@@ -1,6 +1,6 @@
 import { connection } from "../database/db.js";
 
-export function updatePostData(post_id, newCaption, newTrend) {
+export async function updatePostData(post_id, newCaption, newTrend) {
     updatePostCaption(post_id, newCaption);
     updatePostTrend(post_id, newTrend);
     return;
