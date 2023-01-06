@@ -6,7 +6,7 @@ export  async function postPost (req,res){
     const { link, caption } = req.body;
     try {
         const data = await getLinkPreview(link);
-        await postRepository.insertPost(user_id,link,caption, data.title, data.images[0]);
+        await postRepository.insertPost(user_id,link,caption, data.title, data.images[0], data.description);
         res.sendStatus(200); 
     } catch (error) {
         console.log(error);
