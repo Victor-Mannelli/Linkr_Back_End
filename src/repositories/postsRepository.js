@@ -18,9 +18,9 @@ async function selectId(){
     return connection.query('SELECT id FROM posts ORDER BY id DESC LIMIT 1');
 }
 
-async function insertTrend(trend_name, count){
+async function insertTrend(trend_name){
     return connection.query('INSERT INTO trending (trending_name, count) VALUES ($1, $2);',
-    [trend_name, count])
+    [trend_name, 1])
 }
 
 export const postRepository = {
