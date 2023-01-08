@@ -24,7 +24,7 @@ export async function signUp(req, res) {
 export async function signIn(_req, res) {
 	try {
 		console.log(res.locals.user.rows);
-		const user_id = res.locals.user.rows[0].user_id;
+		const user_id = res.locals.user.rows[0].id;
 		const token = uuid();
 		await authRepository.createSession({ token, user_id });
 
