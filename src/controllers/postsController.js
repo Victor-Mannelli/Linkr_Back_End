@@ -4,13 +4,13 @@ import { updatePostTrend } from "../repositories/postRepository.js";
 import { connection } from "../database/db.js";
 
 export  async function postPost (req,res){
-    //const user_id = res.locals.userId;
-    const { link, caption} = req.body;
-    const trends = ["#loucura", "#cara"];
+    const user_id = res.locals.userId;
+    const { link, caption, trends} = req.body;
+    //const trends = ["#loucura", "#cara"];
     try {
-        //const data = await getLinkPreview(link);
-        //await postRepository.insertPost(user_id,link,caption, data.title, data.images[0], data.description);
-        await postRepository.insertPost(link,caption);
+        const data = await getLinkPreview(link);
+        await postRepository.insertPost(user_id,link,caption, data.title, data.images[0], data.description);
+        //await postRepository.insertPost(link,caption);
         const idPost = (await postRepository.selectId()).rows[0].id;
         console.log(idPost);
 
