@@ -26,8 +26,9 @@ export  async function postPost (req,res){
                 await connection.query('INSERT INTO post_trending (trending_id, post_id) VALUES ($1, $2);',
                 [trendId, idPost]);
             }else{
-                await postRepository.insertTrend(iten);
-                const {id} = await connection.query('SELECT * FROM trending  tr WHERE trending_name = $1;',[iten]).rows[0]
+                const x =  await postRepository.insertTrend(iten);
+                console.log(x)
+                const {id} = x.rows[0]
                 await connection.query('INSERT INTO post_trending (trending_id, post_id) VALUES ($1, $2);',
                 [id, idPost]);
             }
