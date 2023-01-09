@@ -2,7 +2,7 @@ import { connection } from "../database/db.js";
 
 async function insertPost(user_id,link,caption,title, image, description) {
 	return connection.query(`
-    INSERT INTO posts (user_id,link,caption) VALUES ($1, $2, $3, $4, $5, $6);`,
+    INSERT INTO posts (user_id,link,caption,title, image_link, description) VALUES ($1, $2, $3, $4, $5, $6);`,
     [user_id, link, caption, title, image, description]);
 }
 /*async function insertPost(link,caption) {
@@ -11,7 +11,13 @@ async function insertPost(user_id,link,caption,title, image, description) {
     [1, link, caption])};
 */
 async function selectPosts() {
-	return connection.query('SELECT * FROM posts ORDER BY id DESC LIMIT 20');
+	return connection.query(`
+    SELECT posts.id, posts.user_id, posts.link, posts.caption, posts.title, posts.image_link, posts.description,
+    users.id, users.username, users.profile_picture as "image"
+    FROM posts 
+    JOIN users 
+    ON posts.user_id = users.id 
+    ORDER BY posts.id DESC LIMIT 20`);
 }
 
 async function selectId(){
