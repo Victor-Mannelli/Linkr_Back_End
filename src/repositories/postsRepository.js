@@ -19,7 +19,7 @@ async function selectId(){
 }
 
 async function insertTrend(trend_name){
-    return connection.query('INSERT INTO trending (trending_name, count) VALUES ($1, $2);',
+    return connection.query('INSERT INTO trending (trending_name, count) VALUES ($1, $2) RETURNING id;',
     [trend_name, 1])
 }
 
