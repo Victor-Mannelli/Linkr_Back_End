@@ -13,13 +13,14 @@ async function insertPost(user_id,link,caption,title, image, description) {
 */
 async function selectPosts() {
 	return connection.query(`
-    SELECT posts.id, posts.user_id, posts.link, posts.caption, posts.title, posts.image_link, posts.description,
-    users.id, users.username, users.profile_picture as "image"
+    SELECT posts.*,
+    users.username, users.profile_picture as "image"
     FROM posts 
     JOIN users 
     ON posts.user_id = users.id 
     ORDER BY posts.id DESC LIMIT 20`);
 }
+
 
 async function selectId(){
     return connection.query('SELECT id FROM posts ORDER BY id DESC LIMIT 1');
