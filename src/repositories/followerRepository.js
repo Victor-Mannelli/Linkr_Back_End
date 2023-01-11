@@ -6,6 +6,5 @@ export async function insertFollow(follow_id,user_id) {
 }
 
 export async function unFollow(id) {
-
     return connection.query('DELETE FROM followers WHERE id = $1',[id]);
 }
