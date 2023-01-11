@@ -15,7 +15,7 @@ export  async function postPost (req,res){
         console.log(idPost);
 
         trends.forEach(async(iten)=>{
-            const trendExist = await connection.query('SELECT * FROM trending  tr WHERE trending_name = $1;',[iten]);
+            const trendExist = await connection.query('SELECT * FROM trending WHERE trending_name = $1;',[iten]);
             const trendId = trendExist.rows[0]?.id
             console.log(iten)
             if(trendExist.rowCount>0){

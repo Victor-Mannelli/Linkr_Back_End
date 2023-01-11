@@ -23,12 +23,11 @@ export async function signUp(req, res) {
 
 export async function signIn(_req, res) {
 	try {
-		console.log(res.locals.user.rows);
 		const user_id = res.locals.user.rows[0].id;
 		const token = uuid();
 		await authRepository.createSession({ token, user_id });
 
-		res.status(200).send({token: token});
+		res.status(200).send({ token: token });
 	} catch (error) {
 		console.log(error);
 		return res.sendStatus(500);
@@ -40,7 +39,7 @@ export async function logOut(req, res) {
 		const { authorization } = req.headers;
 		const token = authorization?.replace("Bearer ", "");
 		await authRepository.logOut(token);
-		
+
 		res.status(200).send({ message: "User logged out" });
 	} catch (error) {
 		console.log(error);
