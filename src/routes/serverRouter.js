@@ -4,6 +4,7 @@ import postRouter from "./postRouter.js";
 import trendRouter from "./trendRouter.js";
 import userRouter from "./userRouter.js";
 import likesRouter from "./likesRouter.js";
+import  followRouter from "./followRouter.js";
 
 //import postRouter from "./postRouter.js";
 
@@ -15,5 +16,6 @@ serverRouter.use(trendRouter);
 serverRouter.use(postRouter);
 serverRouter.use(userRouter);
 serverRouter.use(likesRouter);
+serverRouter.use(followRouter);
 
 export default serverRouter;
