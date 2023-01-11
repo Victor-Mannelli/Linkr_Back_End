@@ -9,16 +9,15 @@ export async function authValidation(req,res, next){
     }
     try{
         const userSession = await connection.query('SELECT * FROM sessions WHERE token = $1;', [token]);
-
-        if (userSession.rowCount == 0){
+        if (userSession.rowCount === 0){
             return res.status(401).send({message:"token inválido"})
         }
 
         const userSessionId = userSession.rows[0].user_id;
         res.locals.userId = userSessionId;
 
+        next();
     }catch(err){
         res.sendStatus(500);
     }
-    next();
 }
