@@ -3,10 +3,7 @@ import authRouter from "./authRouter.js";
 import trendRouter from "./trendRouter.js";
 import userRouter from "./userRouter.js";
 import likesRouter from "./likesRouter.js";
-import  followRouter from "./followRouter.js";
-
-//import postRouter from "./postRouter.js";
-
+import followRouter from "./followRouter.js";
 import postRouter from "./postRouter.js";
 
 const serverRouter = Router();
