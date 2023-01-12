@@ -57,10 +57,12 @@ export async function postPost(req, res) {
 	}
 }
 
-export async function getPosts(_req, res) {
+export async function getPosts(req, res) {
 	const user_id = res.locals.userId;
+	const { limit, offset } = req.headers;
+	console.log(offset);
 	try {
-		const result = await postRepository.selectPosts(user_id);
+		const result = await postRepository.selectPosts(user_id, limit, offset);
 		res.status(200).send(result.rows);
 	} catch (error) {
 		console.log(error);
