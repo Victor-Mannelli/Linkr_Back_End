@@ -11,7 +11,7 @@ async function insertPost(user_id,link,caption,title, image, description) {
     INSERT INTO posts (user_id,link,caption) VALUES ($1, $2, $3);`,
     [1, link, caption])};
 */
-async function selectPosts(user_id) {
+async function selectPosts(user_id, limit ,offset) {
 	return connection.query(`
     SELECT posts.*,
     users.username, users.profile_picture as "image",
@@ -23,7 +23,7 @@ async function selectPosts(user_id) {
     ON   f.follow_id = users.id
     WHERE f.user_id  = $1 
     OR posts.user_id = $1
-    ORDER BY posts.id DESC LIMIT 20`,[user_id]);
+    ORDER BY posts.id DESC LIMIT $2 OFFSET $3`,[user_id, limit, offset]);
 }
 
 
