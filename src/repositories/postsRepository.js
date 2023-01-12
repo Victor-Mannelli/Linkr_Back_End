@@ -11,14 +11,19 @@ async function insertPost(user_id,link,caption,title, image, description) {
     INSERT INTO posts (user_id,link,caption) VALUES ($1, $2, $3);`,
     [1, link, caption])};
 */
-async function selectPosts() {
+async function selectPosts(user_id) {
 	return connection.query(`
     SELECT posts.*,
-    users.username, users.profile_picture as "image"
+    users.username, users.profile_picture as "image",
+    f.user_id AS fuser_id
     FROM posts 
-    JOIN users 
-    ON posts.user_id = users.id 
-    ORDER BY posts.id DESC LIMIT 20`);
+    LEFT JOIN users 
+    ON posts.user_id = users.id  
+    LEFT JOIN followers  f 
+    ON   f.follow_id = users.id
+    WHERE f.user_id  = $1 
+    OR posts.user_id = $1
+    ORDER BY posts.id DESC LIMIT 20`,[user_id]);
 }
 
 

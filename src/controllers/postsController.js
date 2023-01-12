@@ -42,8 +42,9 @@ export  async function postPost (req,res){
 }
 
 export  async function getPosts (req,res){
+    const user_id = res.locals.userId;
     try {
-        const result = await postRepository.selectPosts();
+        const result = await postRepository.selectPosts(user_id);
         res.status(200).send(result.rows)
     } catch (error) {
         console.log(error);
