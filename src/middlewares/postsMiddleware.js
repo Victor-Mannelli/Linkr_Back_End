@@ -28,5 +28,3 @@ export function getOriginalPostId(req, res, next) {
 
   next();
 }
-
-export { validatePostId, getOriginalPostId };
