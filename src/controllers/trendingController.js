@@ -13,8 +13,9 @@ export  async function getTrending (req,res){
 }
 export async function getTrendingPosts(req,res){
     const {hashtag} = req.params
+    const { limit, offset } = req.headers;
     try {
-        const result = await trendRepository.getTrendPost(hashtag)
+        const result = await trendRepository.getTrendPost(hashtag,limit,offset)
         res.status(200).send(result.rows)
     } catch (error) {
         console.log(error)
