@@ -36,6 +36,7 @@ async function insertTrend(trend_name){
     [trend_name, 1])
 }
 
+
 export const postRepository = {
 	insertPost,
     selectPosts,
