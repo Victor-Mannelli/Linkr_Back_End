@@ -2,6 +2,8 @@ import * as repository from "../repositories/postRepository.js";
 
 export async function validatePostId(req, res, next) {
     const post_id = req.params.postId
+    // console.log(req.params);
+
     try {
       const postExists = (await repository.postById(post_id)).rows;
       if (!postExists.length) return res.sendStatus(404);
