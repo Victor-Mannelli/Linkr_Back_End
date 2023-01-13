@@ -21,9 +21,8 @@ export async function getAllUsers(req, res) {
 	}
 }
 export async function userPage(req, res) {
-	const { limit, offset} = req.headers;
 	try {
-		const userPosts = await userRepository.getUserPosts(req.params.id, limit,offset);
+		const userPosts = await userRepository.getUserPosts(req.params.id);
 		res.status(200).send(userPosts.rows);
 	} catch (error) {
 		console.log(error);
