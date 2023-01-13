@@ -15,7 +15,10 @@ async function selectPosts(user_id, limit ,offset) {
 	return connection.query(`
     SELECT posts.*,
     users.username, users.profile_picture as "image",
-    f.user_id AS fuser_id
+    CASE WHEN f.user_id  = $1
+    THEN true 
+    ELSE false 
+    END AS hasFollow
     FROM posts 
     LEFT JOIN users 
     ON posts.user_id = users.id  
@@ -35,6 +38,7 @@ async function insertTrend(trend_name){
     return connection.query('INSERT INTO trending (trending_name, count) VALUES ($1, $2) RETURNING id;',
     [trend_name, 1])
 }
+
 
 export const postRepository = {
 	insertPost,
