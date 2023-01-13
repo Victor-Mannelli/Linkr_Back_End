@@ -6,10 +6,10 @@ export async function updatePost(req, res) {
     const { post_id } = res.locals;
     console.log(post_id, user_id);
     try {
-        const postExists = await repository.postByUserId(post_id, user_id);
-        if(!postExists.rowCount)
-            return res.sendStatus(401);
-        await repository.updatePostData(postExists.rows[0].id, newCaption, newTrend);
+        // const postExists = await repository.postByUserId(post_id, user_id);
+        // if(!postExists.rowCount)
+        //     return res.sendStatus(401);
+        await repository.updatePostData(post_id, newCaption, newTrend);
         return res.sendStatus(204);
     } catch (error) {
         console.log(error)

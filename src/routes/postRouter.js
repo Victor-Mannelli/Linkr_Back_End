@@ -10,7 +10,7 @@ import { validatePostId } from "../middlewares/postsMiddleware.js";
 const postRouter = Router();
 
 postRouter.post("/post", userMiddlewares.authValidation, validateSchema(postSchema), postPost);
-postRouter.patch("/post/:postId", validateSchema(updatePostSchema), updatePost);
+postRouter.patch("/post/:postId",  validatePostId, validateSchema(updatePostSchema), updatePost);
 postRouter.delete("/post/:postId", validatePostId, deletePost);
 postRouter.get("/post", userMiddlewares.authValidation, getPosts);
 
