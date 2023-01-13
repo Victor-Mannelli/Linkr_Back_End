@@ -9,8 +9,8 @@ export async function getUserPosts(user_id) {
 		[user_id]
 	);
 }
-export async function getAllUsers() {
+export async function getAllUsers(id) {
 	return connection.query(
-		"SELECT u.id, u.username, u.profile_picture FROM users as u"
+		"SELECT u.id, u.username, u.profile_picture,CASE WHEN $1 = f.user_id THEN true ELSE false END AS isFollower  FROM users as u LEFT JOIN followers f ON f.follow_id = u.id ORDER BY isFollower DESC ;",[id]
 	);
 }
