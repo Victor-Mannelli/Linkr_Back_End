@@ -6,6 +6,6 @@ const userRouter = Router();
 
 userRouter.get("/user", userMiddleware.validateUser, userController.getUserById);
 userRouter.get("/user/:id", userMiddleware.validateUserIdParams, userController.userPage);
-userRouter.get("/users", userController.getAllUsers)
+userRouter.get("/users",userMiddleware.validateUser, userController.getAllUsers)
 
 export default userRouter;

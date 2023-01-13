@@ -10,9 +10,10 @@ export async function getUserById(req, res) {
 		res.sendStatus(500);
 	}
 }
-export async function getAllUsers(_req, res) {
+export async function getAllUsers(req, res) {
+	const { user_id } = req.info
 	try {
-		const allUsers = await userRepository.getAllUsers();
+		const allUsers = await userRepository.getAllUsers(user_id);
 		res.status(200).send(allUsers.rows);
 	} catch (error) {
 		console.log(error);
