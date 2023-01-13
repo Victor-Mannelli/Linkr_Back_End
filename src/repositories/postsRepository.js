@@ -15,7 +15,10 @@ async function selectPosts(user_id) {
 	return connection.query(`
     SELECT posts.*,
     users.username, users.profile_picture as "image",
-    f.user_id AS fuser_id
+    CASE WHEN f.user_id  = $1
+    THEN true 
+    ELSE false 
+    END AS hasFollow
     FROM posts 
     LEFT JOIN users 
     ON posts.user_id = users.id  
